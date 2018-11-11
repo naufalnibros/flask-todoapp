@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <div>
+      TODO add new Item:
+      <form action="/add" method="post">
+        <input type="text" name="todo"><button type="submit" name="button">Add</button>
+      </form>
+    </div>
+    <div>
+      <h2>Incomplete Items</h2>
+      <ul>
+        {% for value in incomplete %}
+        <li style="font-size: 15pt">
+          {{ value.text }} <a href="{{ url_for('complete', id=value.id) }}">Mark as Complete</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <h2>Complete Items</h2>
+      <ul>
+        {% for value in complete %}
+        <li style="font-size: 15pt">
+          {{ value.text }} <a href="{{ url_for('incomplete', id=value.id) }}">Mark as Incomplete</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
